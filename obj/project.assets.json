@@ -684,6 +684,15 @@
             "rid": "win"
           }
         }
+      },
+      "Vse.Web.Serialization.ControlledSerializationJsonConverter/1.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Vse.Web.Serialization.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Vse.Web.Serialization.dll": {}
+        }
       }
     }
   },
@@ -2027,6 +2036,21 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Vse.Web.Serialization.ControlledSerializationJsonConverter/1.0.2": {
+      "sha512": "0GM066Z0YsVekfEonmycGvFgJfEPd0U3gGeEzUQNIkkHXOLo0D29NKuKldgEniLs3vAVLNsfLsGSjZZZgQc2mg==",
+      "type": "package",
+      "path": "vse.web.serialization.controlledserializationjsonconverter/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Vse.Web.Serialization.dll",
+        "lib/net40/Vse.Web.Serialization.pdb",
+        "lib/net45/Vse.Web.Serialization.dll",
+        "lib/net45/Vse.Web.Serialization.pdb",
+        "vse.web.serialization.controlledserializationjsonconverter.1.0.2.nupkg.sha512",
+        "vse.web.serialization.controlledserializationjsonconverter.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -2034,7 +2058,8 @@
       "MailKit >= 4.2.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.4",
       "Microsoft.EntityFrameworkCore >= 6.0.14",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.14"
+      "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.14",
+      "Vse.Web.Serialization.ControlledSerializationJsonConverter >= 1.0.2"
     ]
   },
   "packageFolders": {
@@ -2090,6 +2115,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[6.0.14, )"
+          },
+          "Vse.Web.Serialization.ControlledSerializationJsonConverter": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           }
         },
         "imports": [
@@ -2113,5 +2142,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.122\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Vse.Web.Serialization.ControlledSerializationJsonConverter 1.0.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Vse.Web.Serialization.ControlledSerializationJsonConverter",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

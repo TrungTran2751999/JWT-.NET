@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Html.Partial("Header")
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="name" />
+    <input type="text" id="password" />
+    <button onclick="submit()">SUBMIT</button>
+</body>
+<script>
+    function submit() {
+        let username = $("#name").val();
+        let password = $("#password").val();
+        $.ajax({
+            "url": "http://localhost:5221/api/login",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            data: JSON.stringify({ username: username, password: password })
+        }).done(function () {
+            location.href = "/student";
+        }).fail(function(){
+            alert("SAI CMNR")
+        })
+
+        console.log(`${username}`);
+    }
+</script>
+
+</html>

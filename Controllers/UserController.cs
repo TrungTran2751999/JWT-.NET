@@ -12,7 +12,6 @@ using System.Security.Claims;
 namespace app.Controllers;
 
 [ApiController]
-[Route("api/login")]
 public class UserController : ControllerBase
 {
     private readonly ApplicationDbContext dbContext;
@@ -23,8 +22,11 @@ public class UserController : ControllerBase
         this.jwtSetting = options.Value;
         this.contextAccessor = contextAccessor;
     }
+    [Route("api/login")]
     [HttpPost]
     public async Task<IActionResult> Authenticate([FromBody] UserCred user){
+        Console.WriteLine(user.username);
+        Console.WriteLine(user.password);
         var result = await dbContext.Users.FirstOrDefaultAsync(param=>param.username==user.username && param.password==user.password);
         if(result==null){
             return Unauthorized();
@@ -43,6 +45,13 @@ public class UserController : ControllerBase
         string finalToken = tokenHandler.WriteToken(token);
         
         contextAccessor.HttpContext.Response.Cookies.Append("token",finalToken, new CookieOptions{HttpOnly=true});
+        Response.Redirect("/student");
         return Ok(finalToken);
+    }
+    [Route("api/logout")]
+    [HttpGet]
+    public void LogOut(){
+        Response.Cookies.Delete("token");
+        Response.Redirect("/login");
     }
 }

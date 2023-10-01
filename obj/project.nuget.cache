@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "J9HFa0yu0OelSSV431dW+xhA3k4HIaUHffck7MGBMsMyOsVSeTyfkkkVf7JZxzD/gbyKwUyv+pSFBVNamjmQNQ==",
+  "dgSpecHash": "sznbwFS5xy3Yv+LleP0/DJ7RCZacRDUBsGxmx7bTyw6sqo3sLPFchENvXUlErD7Kqx//hIlBOjz9ogCNAp9fzw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Desktop\\ASP.NET-MVC\\app\\app.csproj",
   "expectedPackageFiles": [
@@ -49,7 +49,19 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\vse.web.serialization.controlledserializationjsonconverter\\1.0.2\\vse.web.serialization.controlledserializationjsonconverter.1.0.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Vse.Web.Serialization.ControlledSerializationJsonConverter 1.0.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Vse.Web.Serialization.ControlledSerializationJsonConverter",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

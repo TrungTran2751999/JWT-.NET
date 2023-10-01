@@ -1,1 +1,8 @@
 <p>Index Student</p>
+@foreach(var item in ViewBag.result){
+    <p>@item.idSystem</p>
+}
+<script>
+    let a = @Html.Raw(Json.Serialize(ViewBag.result));
+    console.log(a);
+</script>

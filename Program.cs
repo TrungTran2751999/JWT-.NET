@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Net;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -62,6 +63,15 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseStatusCodePages(async context =>
+{
+    var response = context.HttpContext.Response;
+
+    if (response.StatusCode == (int)HttpStatusCode.Unauthorized ||
+        response.StatusCode == (int)HttpStatusCode.Forbidden)
+        response.Redirect("/login");
+});
 
 app.UseAuthentication();
 app.UseAuthorization();

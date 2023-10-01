@@ -11,7 +11,8 @@
           "MailKit": "4.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.4",
           "Microsoft.EntityFrameworkCore": "6.0.14",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.14"
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.14",
+          "Vse.Web.Serialization.ControlledSerializationJsonConverter": "1.0.2"
         },
         "runtime": {
           "app.dll": {}
@@ -499,6 +500,14 @@
             "fileVersion": "4.700.19.56404"
           }
         }
+      },
+      "Vse.Web.Serialization.ControlledSerializationJsonConverter/1.0.2": {
+        "runtime": {
+          "lib/net45/Vse.Web.Serialization.dll": {
+            "assemblyVersion": "1.0.2.0",
+            "fileVersion": "1.0.2.0"
+          }
+        }
       }
     }
   },
@@ -829,6 +838,13 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "Vse.Web.Serialization.ControlledSerializationJsonConverter/1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0GM066Z0YsVekfEonmycGvFgJfEPd0U3gGeEzUQNIkkHXOLo0D29NKuKldgEniLs3vAVLNsfLsGSjZZZgQc2mg==",
+      "path": "vse.web.serialization.controlledserializationjsonconverter/1.0.2",
+      "hashPath": "vse.web.serialization.controlledserializationjsonconverter.1.0.2.nupkg.sha512"
     }
   }
 }
