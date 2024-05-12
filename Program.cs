@@ -6,6 +6,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Net;
+using System.Net.WebSockets;
+using System.Net.Sockets;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +51,7 @@ builder.Services.AddControllersWithViews();
 var _jwtSetting = builder.Configuration.GetSection("JwtSettings");
 
 builder.Services.Configure<JwtSettings>(_jwtSetting);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -75,7 +78,49 @@ app.UseStatusCodePages(async context =>
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseWebSockets();
+var connections = new List<WebSocket>();
+app.Map("/ws", async context =>{
+    if(context.WebSockets.IsWebSocketRequest){
+        using var ws = await context.WebSockets.AcceptWebSocketAsync();
+        connections.Add(ws);
+        await BroadCast("joineddd okok");
+        await ReceiMessage(ws, 
+            async (result, buffer)=>{
+                if(result.MessageType == WebSocketMessageType.Text){
+                    string message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    await BroadCast(message);
 
+                }else if(result.MessageType==WebSocketMessageType.Close || ws.State==WebSocketState.Aborted){
+                    connections.Remove(ws);
+                    await BroadCast("left room");
+                    await BroadCast($@"{connections.Count} is connecting");
+                    await ws.CloseAsync(result.CloseStatus.Value, result.CloseStatusDescription, CancellationToken.None);
+                }
+            }
+        );
+    }else{
+        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
+    }
+});
+async Task BroadCast(string message){
+    var bytes = Encoding.UTF8.GetBytes(message);
+    foreach(var socket in connections){
+        if(socket.State==WebSocketState.Open){
+            var arraySegment = new ArraySegment<byte>(bytes, 0, bytes.Length) ;
+            await socket.SendAsync(arraySegment, 
+            WebSocketMessageType.Text, true, CancellationToken.None);
+        }
+    }
+ }
+async Task ReceiMessage(WebSocket socket, Action<WebSocketReceiveResult, byte[]> handleMessage){
+    var buffer = new byte[1024];
+    while(socket.State == WebSocketState.Open){
+        var result = await socket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+        handleMessage(result, buffer);
+    }
+}
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
